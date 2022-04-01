@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
+import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 import './App.css';
+import AgentDetail from './views/Agent/AgentDetail';
+import AgentList from './views/Agent/AgentList';
+import CreateAgent from './views/Agent/CreateAgent';
+import {LoginPage} from './views/LoginPage'
+import {MainLayout} from './views/MainLayout'
+import Tickets from './views/Tickets/Tickets';
 
 function App() {
+  const isLoggedIn=useSelector(state=>state.auth.isLoggedIn);
+  const routes=[
+    {path:"/login",element: <LoginPage/>},
+    {path:"/",element:isLoggedIn ? <MainLayout/>: <Navigate to='/login'/>,
+    children:[
+      {path:'tickets',element:<Tickets/>},
+      {path:'agents',element:<AgentList/>},
+      {path:'agents/create',element:<CreateAgent/>},
+      {path:'agents/:id',element:<AgentDetail/>}
+     
+    ]
+    
+  },
+  
+  ]
+  const element=useRoutes(routes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+     {element}
     </div>
   );
 }

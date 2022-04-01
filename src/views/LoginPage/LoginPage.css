@@ -1,0 +1,41 @@
+.form-header{
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.625rem;
+    text-align: center;
+    margin:40px 0 20px;
+}
+
+.form-container{
+    padding:30px 0;
+    font-family: 'Poppins', sans-serif;
+}
+.forgot-link{
+    color:#118AB2;
+    font-size:var(--forgot-link);
+    line-height: 1.25rem;
+}
+.form{
+    background: #f8f8f8;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    min-height: 300px;
+    padding: 30px;
+}
+.button{
+      margin-top:20px;
+      width: 100%;
+      color:white;
+}
+
+.text{
+    color:#727272;
+    font-size:16px;
+    line-height: 1.25rem;
+    text-align: center;
+}
+.register-text{
+    font-weight: 500;
+    color:#073B4C;
+}
